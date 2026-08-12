@@ -1,7 +1,7 @@
 # Anchor Tree — Project Context
 
 ## Immediate next task
-Build an interactive co-founder proposal page on the website for Hakan. Design reference and content are in `landed-proposal.pdf` and `hakan-proposal.md`. Same paper aesthetic as `index.html`. Should feel alive — not a static PDF dump.
+~~Build an interactive co-founder proposal page on the website for Hakan.~~ Done — see `proposal.html`. Waiting on Hakan's response.
 
 ---
 
@@ -65,6 +65,7 @@ Build an interactive co-founder proposal page on the website for Hakan. Design r
 ```
 anchortree/
 ├── index.html          ← landing page
+├── proposal.html       ← interactive co-founder proposal page for Hakan
 ├── logo.png            ← brand mark (ink illustration: anchor + tree + roots)
 ├── hakan-proposal.md   ← co-founder proposal (text)
 ├── landed-proposal.pdf ← co-founder proposal (designed PDF)
@@ -86,7 +87,6 @@ anchortree/
 - No Nginx config on the droplet
 - No domain connected
 - No deploy pipeline
-- Interactive proposal page for Hakan (immediate next task)
 
 ---
 
