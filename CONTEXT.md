@@ -3,11 +3,13 @@
 ## Immediate next task
 ~~Build an interactive co-founder proposal page on the website for Hakan.~~ Done. See `proposal.html`. Waiting on Hakan's response.
 
+~~Replace the coming-soon page with the real company landing page.~~ Done. See `index.html`, built from `landing-brief.md`.
+
 ---
 
 ## What this is
 
-**Anchor Tree** is a media and production company based in The Hague, Netherlands. Currently building its first product: a video interview show. Company identity and name are settled. Show name is still being decided. "Landed" was a candidate but isn't confirmed.
+**Anchor Tree** is a student production company based in The Hague, Netherlands. Two co-founders, Noe and Hakan. Young, scrappy, real, not corporate. Currently producing a video interview show (name TBD, "Landed" was a candidate but isn't confirmed) and a political interview podcast (name TBD) produced for a third party.
 
 ---
 
@@ -56,6 +58,7 @@
 - **Repo:** https://github.com/kebabmax/anchortree.git
 - **SSH key:** `~/.ssh/id_ed25519`, linked to droplet
 - **Connect to server:** `ssh root@<droplet-ip>`
+- **Domain:** anchortree.net (DNS at Gandi). Apex points at the droplet. HTTPS via Certbot in progress, `www` needed a DNS fix (Gandi's Web Redirection feature was pointing it at Gandi's own parking service instead of the droplet)
 
 ---
 
@@ -64,11 +67,13 @@
 **File structure:**
 ```
 anchortree/
-├── index.html          ← landing page
+├── index.html          ← company landing page (nav, hero, what we do, productions, team, contact)
 ├── proposal.html       ← interactive co-founder proposal page for Hakan
-├── logo.png            ← brand mark (ink illustration: anchor + tree + roots)
+├── logo.svg            ← vector brand mark, traced from logo.png, used inline via <symbol>/<use>
+├── logo.png            ← original ink illustration (anchor + tree + roots), reference only
 ├── hakan-proposal.md   ← co-founder proposal (text)
 ├── landed-proposal.pdf ← co-founder proposal (designed PDF)
+├── landing-brief.md    ← brief this landing page was built from
 └── CONTEXT.md          ← this file
 ```
 
@@ -77,16 +82,16 @@ anchortree/
 - Ink palette: `--ink: #1c1a15` / `--ink-mid: #5a5448` / `--ink-dim: #9c9185`
 - Rule color: `rgba(28,26,21,0.12)`
 - Fonts: **Playfair Display** (headings, italic) + **EB Garamond** (body) via Google Fonts
-- Brand mark: `logo.png`, detailed ink illustration, use `mix-blend-mode: multiply`
-- Animations: fade-up on load, staggered, subtle
+- Brand mark: `logo.svg` inline (nav ~28px, footer ~20px), `mix-blend-mode: multiply`. `logo.png` kept for reference only
+- Favicon: small square crop of the mark (centered on the anchor), embedded as base64 PNG in `index.html`
+- Animations: fade-up on load and on scroll (staggered, IntersectionObserver), subtle
 - Single-file HTML preferred
 
 **What's not done yet:**
-- Show name not confirmed ("Landed" is a candidate, not locked)
-- Email capture has no backend
-- No Nginx config on the droplet
-- No domain connected
-- No deploy pipeline
+- Show name not confirmed ("Landed" is a candidate, not locked); podcast name also TBD
+- No Nginx config confirmed working end-to-end on the droplet yet
+- HTTPS certificate not yet issued (DNS fix for `www` just applied, re-run Certbot once it propagates)
+- No confirmed deploy pipeline (cron-pull instructions were given, not confirmed run)
 
 ---
 
@@ -110,7 +115,6 @@ anchortree/
 ---
 
 ## What to ask Noe if unclear
-- Show name (still open)
-- Domain / droplet IP (not shared yet)
-- Backend for email capture (not decided)
-- Nginx / deploy setup (not started)
+- Show name and podcast name (both still open)
+- Whether Nginx/cron-pull deploy setup on the droplet was actually completed
+- Real Instagram handle to confirm `@anchortree` in the footer is correct
